@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Мета-теги для корректного отображения и адаптивности -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarHub — Koenigsegg Gemera</title>
+    
+    <!-- Фавикон проекта и подключение стилей -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+    <!-- ШАПКА: Унифицированная навигация для всех страниц сайта -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="img/logo_white.png" alt="Logo" height="30" class="me-2">
+                    <span class="fw-bold text-uppercase">CarHub</span>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Main</a></li>
+                        <li class="nav-item"><a class="nav-link" href="list.html">List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="form.html">Form</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ИНФОРМАЦИЯ ОБ ЭЛЕМЕНТЕ: Детальный обзор Koenigsegg Gemera -->
+    <main class="container my-5 py-5">
+        <div class="row align-items-center">
+            <!-- Визуальный блок: изображение в формате WebP с использованием теней -->
+            <div class="col-md-7 mb-4">
+                <img src="img/koniegsegg.webp" class="img-fluid rounded-4 shadow-lg" alt="Koenigsegg Gemera">
+            </div>
+            
+            <!-- Текстовый блок: описание и ключевые характеристики -->
+            <div class="col-md-5">
+                <h1 class="display-4 fw-bold text-nowrap">Koenigsegg Gemera</h1>
+                <p class="badge bg-success text-uppercase p-2">Mega-GT / 1700 HP</p>
+                <hr class="my-4">
+                <p class="lead text-muted">
+                    Первый в мире четырехместный гиперкар. Сочетает в себе динамику болида Формулы-1 
+                    и роскошь автомобиля представительского класса. Уникальная гибридная силовая установка.
+                </p>
+                
+                <!-- Список характеристик на базе компонентов Bootstrap List Group -->
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item bg-light"><strong>Мест:</strong> 4 полноценных сиденья</li>
+                    <li class="list-group-item bg-light"><strong>Крутящий момент:</strong> 3500 Нм</li>
+                </ul>
+                
+                <!-- Ссылка на страницу с формой заказа -->
+                <a href="form.html" class="btn btn-secondary btn-lg w-100 shadow">Оставить заявку</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- ПОДВАЛ: Копирайт и информация о проекте -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0 text-secondary small">&copy; 2026 CarHub. Лабораторная работа №2</p>
+        </div>
+    </footer>
+
+    <!-- Скрипты: Bootstrap Bundle и зарезервированный script.js для ЛР №3 -->
+    <script src="https://cdn.jsdelivr.net"></script>
+    <script src="script.js"></script>
+</body>
+</html>

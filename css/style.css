@@ -1,0 +1,60 @@
+/*СТИЛИ*/
+
+/* 1. Общие настройки шрифтов и фона */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #212529;
+}
+
+/* 2. Логотип и навигация */
+.navbar-brand span {
+    letter-spacing: 2px; /* Межбуквенный интервал для стиля */
+    font-size: 1.4rem;
+}
+
+.navbar-nav .nav-link {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+/* 3. Главная страница (Hero-секция) */
+h1.display-1 {
+    font-weight: 900;
+    letter-spacing: -4px;
+    color: #1a1a1a;
+    text-transform: uppercase;
+}
+
+/* 4. Страница списка (List) */
+/* Важное правило: делает все картинки машин ОДИНАКОВОЙ высоты,
+   даже если исходные файлы разного размера */
+.card-img-top {
+    height: 250px;       /* Фиксированная высота */
+    object-fit: cover;   /* Умная обрезка краев, чтобы не было сплющивания */
+    border-bottom: 1px solid #eee;
+}
+
+.card {
+    transition: transform 0.3s ease; /* Эффект при наведении */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Карточка чуть приподнимается */
+}
+
+/* 5. Страница с формой (Form) */
+.form-control:focus {
+    border-color: #212529;
+    box-shadow: 0 0 0 0.25rem rgba(33, 37, 41, 0.1);
+}
+
+/* 6. Футер */
+footer {
+    border-top: 1px solid #333;
+}
+
+footer p {
+    letter-spacing: 1px;
+}

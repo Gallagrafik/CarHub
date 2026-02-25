@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Мета-теги для корректного отображения кириллицы и адаптивности на мобильных устройствах -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarHub — Главная</title>
+    
+    <!-- Иконка сайта (Favicon), отображаемая на вкладке браузера -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <!-- Подключение локального файла стилей Bootstrap 5.3 для базовой верстки -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Подключение собственного файла стилей для кастомного дизайна проекта -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Использование Flexbox (d-flex) для прижатия футера к низу страницы (min-vh-100) -->
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+    <!-- ШАПКА САЙТА: Навигационная панель с использованием компонентов Bootstrap -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <!-- Брендинг: Логотип (белый контур) и текстовое название сайта -->
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="img/logo_white.png" alt="Logo" height="30" class="me-2">
+                    <span class="fw-bold text-uppercase" style="letter-spacing: 1px;">CarHub</span>
+                </a>
+                
+                <!-- Кнопка "Гамбургер" для раскрытия меню на мобильных устройствах -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Основные ссылки навигации -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Main</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="list.html">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="form.html">Form</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ: Центрированная секция (Hero) с названием и кнопкой действия -->
+    <main class="flex-grow-1 d-flex align-items-center justify-content-center">
+        <div class="text-center">
+            <!-- Главный визуальный акцент: темный логотип проекта -->
+            <img src="img/logo_dark.png" alt="CarHub Icon" class="img-fluid mb-3" style="max-width: 180px;">
+            
+            <!-- Заголовок первого уровня с использованием Bootstrap класса display -->
+            <h1 class="display-1 fw-black mb-4">CarHub</h1>
+            
+            <!-- Блок с кнопкой перехода к каталогу автомобилей (страница со списком) -->
+            <div class="d-grid gap-2 col-10 col-md-6 mx-auto">
+                <a href="list.html" class="btn btn-secondary btn-lg py-3 shadow-sm text-uppercase fw-bold">
+                    Перейти к списку
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- ПОДВАЛ САЙТА: Сведения об авторских правах и информация о лабораторной работе -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-0 text-secondary small">&copy; 2024 CarHub. Все права защищены. Лабораторная работа №2</p>
+        </div>
+    </footer>
+
+    <!-- Подключение JS-скриптов Bootstrap для работы интерактивных элементов (меню, кнопок) -->
+    <script src="https://cdn.jsdelivr.net"></script>
+</body>
+</html>

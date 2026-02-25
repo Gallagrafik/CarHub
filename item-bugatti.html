@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Мета-данные страницы -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarHub — Bugatti Bolide</title>
+    
+    <!-- Фавикон и стили -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+    <!-- ШАПКА: Универсальная навигация -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="img/logo_white.png" alt="Logo" height="30" class="me-2">
+                    <span class="fw-bold text-uppercase">CarHub</span>
+                </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Main</a></li>
+                        <li class="nav-item"><a class="nav-link" href="list.html">List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="form.html">Form</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ИНФОРМАЦИЯ О КОНКРЕТНОМ ЭЛЕМЕНТЕ: Описание Bugatti Bolide -->
+    <main class="container my-5 py-5">
+        <div class="row align-items-center">
+            <!-- Блок визуализации: фото авто с тенью и скруглением -->
+            <div class="col-md-7 mb-4 text-center">
+                <img src="img/bugatti.jpg" class="img-fluid rounded-4 shadow-lg" alt="Bugatti Bolide">
+            </div>
+            
+            <!-- Информационный блок: текст и технические параметры -->
+            <div class="col-md-5">
+                <h1 class="display-4 fw-bold">Bugatti Bolide</h1>
+                <p class="badge bg-primary text-uppercase p-2">Ultimate Track Car / 1850 HP</p>
+                <hr class="my-4">
+                <p class="lead text-muted">
+                    Самый бескомпромиссный и быстрый Bugatti в современной истории. 
+                    Легкий углепластиковый кузов и легендарный двигатель W16 создают невероятное соотношение мощности к весу.
+                </p>
+                
+                <!-- Список характеристик в стиле Bootstrap Flush -->
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item bg-light"><strong>Двигатель:</strong> 8.0L W16 Quad-Turbo</li>
+                    <li class="list-group-item bg-light"><strong>Вес:</strong> 1240 кг</li>
+                </ul>
+                
+                <!-- Кнопка перехода к форме заказа -->
+                <a href="form.html" class="btn btn-secondary btn-lg w-100 shadow">Оставить заявку</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0 text-secondary small">&copy; 2026 CarHub. Лабораторная работа №2</p>
+        </div>
+    </footer>
+
+    <!-- Скрипты: Bootstrap Bundle и пользовательский script.js для ЛР №3 -->
+    <script src="https://cdn.jsdelivr.net"></script>
+    <script src="script.js"></script>
+</body>
+</html>

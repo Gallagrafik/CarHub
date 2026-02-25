@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Базовая настройка документа: кодировка и адаптивная область просмотра -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarHub — Список авто</title>
+    
+    <!-- Фавикон и стили проекта -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+    <!-- ШАПКА: Стандартное меню навигации, общее для всех страниц -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="img/logo_white.png" alt="Logo" height="30" class="me-2">
+                    <span class="fw-bold text-uppercase">CarHub</span>
+                </a>
+                <!-- Навигационные ссылки с выделением активного пункта (List) -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Main</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="list.html">List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="form.html">Form</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- СПИСОК ДАННЫХ: Реализация каталога автомобилей через карточки (Bootstrap Cards) -->
+    <main class="container my-5">
+        <h2 class="text-center mb-5 fw-bold">НАШ АВТОПАРК</h2>
+        
+        <!-- Сетка: 1 колонка на мобильных, 3 колонки на средних экранах (row-cols-md-3) -->
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            
+            <!-- Карточка 1: Aston Martin Vulcan -->
+            <div class="col">
+                <!-- Класс h-100 выравнивает карточки по высоте в ряду -->
+                <div class="card h-100 border-0 shadow-sm overflow-hidden">
+                    <img src="img/aston_martin.jpg" class="card-img-top" alt="Aston Martin">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Aston Martin Vulcan</h5>
+                        <p class="card-text text-muted small text-uppercase">Hypercar</p>
+                        <!-- Ссылка на индивидуальную страницу товара -->
+                        <a href="item-vulcan.html" class="btn btn-outline-dark btn-sm px-4">Детали</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 2: Bugatti Bolide -->
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm overflow-hidden">
+                    <img src="img/bugatti.jpg" class="card-img-top" alt="Bugatti">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Bugatti Bolide</h5>
+                        <p class="card-text text-muted small text-uppercase">Track Monster</p>
+                        <a href="item-bugatti.html" class="btn btn-outline-dark btn-sm px-4">Детали</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 3: Koenigsegg Gemera -->
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm overflow-hidden">
+                    <!-- Использование современного формата изображений WEBP -->
+                    <img src="img/koniegsegg.webp" class="card-img-top" alt="Koenigsegg">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Koenigsegg Gemera</h5>
+                        <p class="card-text text-muted small text-uppercase">Mega-GT</p>
+                        <a href="item-koenigsegg.html" class="btn btn-outline-dark btn-sm px-4">Детали</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ПОДВАЛ: Копирайт и информационный блок -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0 text-secondary small">&copy; 2026 CarHub. Лабораторная работа №2</p>
+        </div>
+    </footer>
+
+</body>
+</html>
