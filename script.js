@@ -31,7 +31,7 @@ if (orderForm) {
         const email = document.getElementById('userEmail').value.trim();
 
         // 2. Регулярные выражения для проверки
-        const phoneRegex = /^\+?[0-9]{10,15}$/; // Простой формат телефона
+        const phoneRegex = /^\+[0-9]{10,15}$/; // Простой формат телефона
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Стандартный email
 
         // Проверка данных
