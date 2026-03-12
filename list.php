@@ -1,3 +1,6 @@
+<?php
+include 'script.php';
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -39,8 +42,8 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="index.html">Main</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="list.html">List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="form.html">Form</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="list.php">List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="form.php">Form</a></li>
                     </ul>
                 </div>
             </div>
@@ -60,46 +63,28 @@
 
         <!-- Сетка: 1 колонка на мобильных, 3 колонки на средних экранах (row-cols-md-3) -->
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            
-            <!-- Карточка 1: Aston Martin Vulcan -->
-            <div class="col">
-                <!-- Класс h-100 выравнивает карточки по высоте в ряду -->
-                <div class="card h-100 border-0 shadow-sm overflow-hidden">
-                    <img src="img/aston_martin.jpg" class="card-img-top" alt="Aston Martin">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Aston Martin Vulcan</h5>
-                        <p class="card-text text-muted small text-uppercase">Hypercar</p>
-                        <!-- Ссылка на индивидуальную страницу товара -->
-                        <a href="item-vulcan.html" class="btn btn-outline-dark btn-sm px-4">Детали</a>
+            <?php
+            $cars = getCars();
+            if (empty($cars)) {
+                echo '<div class="col-12 text-center"><p class="alert alert-info">Автомобили пока не добавлены в базу данных.</p></div>';
+            } else {
+                foreach ($cars as $car) {
+            ?>
+                    <div class="col">
+                        <div class="card h-100 border-0 shadow-sm overflow-hidden">
+                            <img src="<?= htmlspecialchars($car['image'] ?? 'img/no-image.jpg') ?>" class="card-img-top" alt="<?= htmlspecialchars($car['title']) ?>">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold"><?= htmlspecialchars($car['title']) ?></h5>
+                                <p class="card-text fw-bold text-success"><?= number_format($car['price'], 0, '.', ' ') ?> ₽</p>
+                                <p class="card-text"><?= htmlspecialchars(substr($car['description'] ?? '', 0, 100)) ?>...</p>
+                                <a href="item-<?= htmlspecialchars($car['slug']) ?>.html" class="btn btn-outline-dark btn-sm px-4">Детали</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Карточка 2: Bugatti Bolide -->
-            <div class="col">
-                <div class="card h-100 border-0 shadow-sm overflow-hidden">
-                    <img src="img/bugatti.jpg" class="card-img-top" alt="Bugatti">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Bugatti Bolide</h5>
-                        <p class="card-text text-muted small text-uppercase">Track Monster</p>
-                        <a href="item-bugatti.html" class="btn btn-outline-dark btn-sm px-4">Детали</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Карточка 3: Koenigsegg Gemera -->
-            <div class="col">
-                <div class="card h-100 border-0 shadow-sm overflow-hidden">
-                    <!-- Использование современного формата изображений WEBP -->
-                    <img src="img/koniegsegg.webp" class="card-img-top" alt="Koenigsegg">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Koenigsegg Gemera</h5>
-                        <p class="card-text text-muted small text-uppercase">Mega-GT</p>
-                        <a href="item-koenigsegg.html" class="btn btn-outline-dark btn-sm px-4">Детали</a>
-                    </div>
-                </div>
-            </div>
-
+            <?php
+                }
+            }
+            ?>
         </div>
     </main>
 
