@@ -32,33 +32,18 @@
 <!-- Использование Flexbox (d-flex) для прижатия футера к низу страницы (min-vh-100) -->
 <body class="d-flex flex-column min-vh-100 bg-light">
 
-    <!-- ШАПКА САЙТА: Навигационная панель с использованием компонентов Bootstrap -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <!-- Брендинг: Логотип (белый контур) и текстовое название сайта -->
                 <a class="navbar-brand d-flex align-items-center" href="index.html">
                     <img src="img/logo_white.png" alt="Logo" height="30" class="me-2">
-                    <span class="fw-bold text-uppercase" style="letter-spacing: 1px;">CarHub</span>
+                    <span class="fw-bold text-uppercase">CarHub</span>
                 </a>
-                
-                <!-- Кнопка "Гамбургер" для раскрытия меню на мобильных устройствах -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Основные ссылки навигации -->
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="index.html">Main</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="list.php">List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="form.php">Form</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="list.php">Каталог</a></li>
+                        <li class="nav-item"><a class="nav-link" href="form.php">Обратная связь</a></li>
                     </ul>
                 </div>
             </div>

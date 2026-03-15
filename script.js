@@ -1,64 +1,96 @@
-// Дожидаемся загрузки DOM
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Поиск (ЛР3)
     const searchInput = document.getElementById('carSearch');
-    
-    // Проверяем, есть ли поиск на текущей странице
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const val = e.target.value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.col'); // Берем все колонки с карточками
-
-            cards.forEach(card => {
+            document.querySelectorAll('#carsContainer .col').forEach(card => {
                 const title = card.querySelector('.card-title').innerText.toLowerCase();
-                // Если текст совпадает — показываем колонку, если нет — скрываем
                 card.style.display = title.includes(val) ? 'block' : 'none';
             });
         });
-        console.log("Поиск CarHub активирован.");
+    }
+
+    // AJAX отправка формы
+    const form = document.getElementById('feedbackForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const data = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                message: document.getElementById('message').value.trim()
+            };
+
+            // клиентская валидация
+            if (!data.name || !data.email || !data.message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+                alert('Проверьте введённые данные!');
+                return;
+            }
+
+            fetch('ajax.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(data)
+            })
+            .then(response => response.json())
+            .then(res => {
+                const modalEl = document.getElementById('successModal');
+                const modal = new bootstrap.Modal(modalEl, {
+                    backdrop: 'static',     // нельзя закрыть кликом вне окна
+                    keyboard: true       // можно закрыть клавишей Esc
+                });
+
+                document.getElementById('modalMessage').innerText = 
+                    res.message || (res.success ? 'Заявка успешно отправлена!' : 'Произошла ошибка');
+
+                modal.show();
+
+                if (res.success) {
+                    form.reset();
+                }
+            })
+            .catch(err => {
+                console.error('Ошибка:', err);
+                document.getElementById('modalMessage').innerText = 'Ошибка соединения с сервером';
+                new bootstrap.Modal(document.getElementById('successModal'), {
+                    backdrop: 'static',
+                    keyboard: false
+                }).show();
+            });
+        });
+    }
+
+    // Кнопка обновления списка (ЛР5)
+    const refreshBtn = document.getElementById('refreshBtn');
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', () => {
+            fetch('ajax.php')
+                .then(r => r.json())
+                .then(cars => updateCarsList(cars));
+        });
     }
 });
 
-// Обработка формы (ЛР №3)
-const orderForm = document.getElementById('orderForm');
-
-if (orderForm) {
-    orderForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // 1. Отключаем перезагрузку страницы
-
-        // Получаем данные из полей
-        const name = document.getElementById('userName').value.trim();
-        const phone = document.getElementById('userPhone').value.trim();
-        const email = document.getElementById('userEmail').value.trim();
-
-        // 2. Регулярные выражения для проверки
-        const phoneRegex = /^\+[0-9]{10,15}$/; // Простой формат телефона
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Стандартный email
-
-        // Проверка данных
-        if (!name) {
-            alert("Введите имя!");
-            return;
-        }
-        if (!phoneRegex.test(phone)) {
-            alert("Введите корректный номер телефона (например, +79991234567)");
-            return;
-        }
-        if (!emailRegex.test(email)) {
-            alert("Введите корректный Email!");
-            return;
-        }
-
-        // 3. Вывод данных в консоль (требование ЛР)
-        console.log("--- Данные формы CarHub ---");
-        console.log("Имя:", name);
-        console.log("Телефон:", phone);
-        console.log("Email:", email);
-
-        // 4. Показываем модальное окно через Bootstrap API
-        const myModal = new bootstrap.Modal(document.getElementById('successModal'));
-        myModal.show();
-
-        // Очищаем форму
-        orderForm.reset();
+function updateCarsList(cars) {
+    const container = document.getElementById('carsContainer');
+    container.innerHTML = '';
+    cars.forEach(car => {
+        const div = document.createElement('div');
+        div.className = 'col';
+        div.innerHTML = `
+            <div class="card h-100 border-0 shadow-sm">
+                <img src="${car.image || 'img/no-image.jpg'}" class="card-img-top" alt="${car.title}">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">${car.title}</h5>
+                    <p class="card-text fw-bold text-success">${Number(car.price).toLocaleString()} ₽</p>
+                    <p class="card-text">${car.description.substring(0, 100)}...</p>
+                    <a href="item.php?slug=${car.slug}" class="btn btn-outline-dark btn-sm">Подробнее</a>
+                </div>
+            </div>`;
+        container.appendChild(div);
     });
 }
