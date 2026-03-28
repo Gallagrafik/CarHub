@@ -1,11 +1,10 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-include 'script.php';
+require_once 'script.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method === 'POST') {
-    // POST — сохранение формы (ЛР5)
     $name    = trim($_POST['name'] ?? '');
     $email   = trim($_POST['email'] ?? '');
     $phone   = trim($_POST['phone'] ?? '');
@@ -20,15 +19,22 @@ if ($method === 'POST') {
 
     echo json_encode([
         'success' => $saved,
-        'message' => $saved ? 'Заявка успешно отправлена!' : 'Ошибка сохранения в БД',
-        'cars'    => $saved ? getCars() : []
+        'message' => $saved ? 'Заявка успешно отправлена!' : 'Ошибка сохранения в БД'
     ]);
     exit;
 }
 
-if ($method === 'GET') {
-    // GET — обновление списка автомобилей (ЛР5)
+// GET — список автомобилей
+if ($method === 'GET' && !isset($_GET['action'])) {
     echo json_encode(getCars());
+    exit;
+}
+
+// GET — список заявок
+if (isset($_GET['action']) && $_GET['action'] === 'get_feedbacks') {
+    $stmt = $pdo->query("SELECT * FROM feedback ORDER BY created_at DESC LIMIT 50");
+    $feedbacks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($feedbacks);
     exit;
 }
 
